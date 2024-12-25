@@ -1,23 +1,21 @@
 package com.example.notes.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-@Entity
+@Entity // Marks this as a JPA Entity
+@Table(name = "note") // Maps to the "note" table in the database
 public class Note {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generate ID
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment primary key
     private Long id;
 
-    private String title;  // Title of the note
-    private String content; // Content of the note
+    @Column(nullable = false)
+    private String title;
 
+    @Column(nullable = false)
+    private String content;
 
-
-    // Getters and Setters
+    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -41,5 +39,4 @@ public class Note {
     public void setContent(String content) {
         this.content = content;
     }
-
 }
